@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <!-- The full path name of a JAR/ZIP file to add to the classpath, or a directory to add to the classpath. -->
+  <classPathEntry location="E:/downloadfile/jdbc/mysql-connector-java-5.0.4-bin.jar" />
+
+  <context id="MySqlTables" targetRuntime="MyBatis3">
+  
+    <commentGenerator>
+        <property name="suppressDate" value="true"/>
+        <property name="addRemarkComments" value="false"/>
+    </commentGenerator>
+    
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+        connectionURL="jdbc:mysql://127.0.0.1:3306/blog"
+        userId="root"
+        password="19950821abc">
+    </jdbcConnection>
+
+    <!-- 
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+     -->
+
+    <!-- 
+    	The <javaModelGenerator> element is used to define properties of the Java model generator.
+        targetPackage:This is the package where the generated classes will be placed
+        targetProject:This is used to specify a target project for the generated objects.
+     -->
+    <javaModelGenerator targetPackage="gdut.ff.domain" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <!-- 
+        The <sqlMapGenerator> element is used to define properties of the SQL map generator.
+        targetPackage:This is the package where the generated SQL Maps will be placed.
+        targetProject:This is used to specify a target project for the generated SQL maps.
+     -->
+    <sqlMapGenerator targetPackage="mybatis"  targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <!-- 
+    	The <javaClientGenerator> element is used to define properties of the Java client generator. 
+        type:This attribute is used to select one of the predefined Java Client generators, or to specify a user provided Java Client generator.
+        XMLMAPPER:The generated objects will be Java interfaces for the MyBatis 3.x mapper infrastructure
+        targetPackage:This is the package where the generated interfaces and implementation classes will be placed.
+        targetProject:This is used to specify a target project for the generated interfaces and classes.
+     -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="gdut.ff.mapper"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table tableName="user" domainObjectName="User" >
+      <property name="useActualColumnNames" value="true"/>
+      <generatedKey column="id" sqlStatement="MySql" identity="true" />
+      <columnOverride column="login_name" property="loginName"></columnOverride>
+    </table>
+
+  </context>
+</generatorConfiguration>
