@@ -8,8 +8,10 @@
   <!-- The full path name of a JAR/ZIP file to add to the classpath, or a directory to add to the classpath. -->
   <classPathEntry location="E:/downloadfile/jdbc/mysql-connector-java-5.0.4-bin.jar" />
 
+  <!-- 使用MyBatis Dynamic SQL,targetRunTime写MyBatis3DynamicSQL -->
   <context id="MySqlTables" targetRuntime="MyBatis3">
   
+    <!-- 注释 -->
     <commentGenerator>
         <property name="suppressDate" value="true"/>
         <property name="addRemarkComments" value="false"/>
